@@ -1,5 +1,5 @@
+#!/usr/bin/python
 import sys
-
 
 import pcd.cmty as cmty
 import pcd.cmtycmp
@@ -28,7 +28,10 @@ def dyncmp(c1a, c1b, c2a, c2b, cmpfunc=pcd.cmtycmp.nmi):
     return value
 
 def dyncmp_series(tcmtys1, tcmtys2, dt, cmpfunc):
-
+    c1t1={}
+    c1t2={}
+    c2t1={}
+    c2t2={}
     print "#t1 t2 value"
     ts = list(tcmtys1)
     if   dt  > 0:             endpoint = -dt
@@ -68,5 +71,5 @@ if __name__ == '__main__':
     tcmtys1 = reader(sys.argv[1])
     tcmtys2 = reader(sys.argv[2])
 
-    dyncmp(tcmtys1, tcmtys2, dt=args.dt,
+    dyncmp_series(tcmtys1, tcmtys2, dt=args.dt,
            cmpfunc=getattr(pcd.cmtycmp, args.cmp))
