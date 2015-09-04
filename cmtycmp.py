@@ -7,10 +7,10 @@ import pcd.tcmty as tcmty
 
 
 def dyncmp(c1a, c1b, c2a, c2b, cmpfunc=pcd.cmtycmp.nmi):
-    nc1t1 = c1t1.nodecmtys_onetoone()
-    nc1t2 = c1t2.nodecmtys_onetoone()
-    nc2t1 = c2t1.nodecmtys_onetoone()
-    nc2t2 = c2t2.nodecmtys_onetoone()
+    nc1t1 = c1a.nodecmtys_onetoone()
+    nc1t2 = c1b.nodecmtys_onetoone()
+    nc2t1 = c2a.nodecmtys_onetoone()
+    nc2t2 = c2b.nodecmtys_onetoone()
 
     c1_transitions = { }
     c2_transitions = { }
