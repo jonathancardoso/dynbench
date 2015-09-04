@@ -1,5 +1,5 @@
+#!/usr/bin/python
 import sys
-
 
 import pcd.cmty as cmty
 import pcd.cmtycmp
@@ -7,10 +7,10 @@ import pcd.tcmty as tcmty
 
 
 def dyncmp(c1a, c1b, c2a, c2b, cmpfunc=pcd.cmtycmp.nmi):
-    nc1t1 = c1t1.nodecmtys_onetoone()
-    nc1t2 = c1t2.nodecmtys_onetoone()
-    nc2t1 = c2t1.nodecmtys_onetoone()
-    nc2t2 = c2t2.nodecmtys_onetoone()
+    nc1t1 = c1a.nodecmtys_onetoone()
+    nc1t2 = c1b.nodecmtys_onetoone()
+    nc2t1 = c2a.nodecmtys_onetoone()
+    nc2t2 = c2b.nodecmtys_onetoone()
 
     c1_transitions = { }
     c2_transitions = { }
@@ -28,7 +28,10 @@ def dyncmp(c1a, c1b, c2a, c2b, cmpfunc=pcd.cmtycmp.nmi):
     return value
 
 def dyncmp_series(tcmtys1, tcmtys2, dt, cmpfunc):
-
+    c1t1={}
+    c1t2={}
+    c2t1={}
+    c2t2={}
     print "#t1 t2 value"
     ts = list(tcmtys1)
     if   dt  > 0:             endpoint = -dt
@@ -68,5 +71,5 @@ if __name__ == '__main__':
     tcmtys1 = reader(sys.argv[1])
     tcmtys2 = reader(sys.argv[2])
 
-    dyncmp(tcmtys1, tcmtys2, dt=args.dt,
+    dyncmp_series(tcmtys1, tcmtys2, dt=args.dt,
            cmpfunc=getattr(pcd.cmtycmp, args.cmp))
